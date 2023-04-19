@@ -14,6 +14,7 @@ FROM registry.access.redhat.com/ubi8/openjdk-17:1.14 AS builder
 # Build dependency offline to streamline build
 COPY pom.xml .
 RUN mvn dependency:go-offline
+COPY run-env.sh .
 
 COPY src src
 RUN mvn package -Dmaven.test.skip=true
@@ -26,6 +27,7 @@ RUN mv /home/jboss/target/$(cat .env-id)-$(cat .env-version).jar /home/jboss/tar
 FROM registry.access.redhat.com/ubi8/openjdk-17-runtime:1.15
 COPY --from=builder /home/jboss/target/export-run-artifact.jar  /deployments/export-run-artifact.jar
 RUN curl -Lo dd-java-agent.jar https://dtdg.co/latest-java-tracer
+COPY run-env.sh /opt/jboss/container/java/run/
 EXPOSE 8081
 ENTRYPOINT ["/opt/jboss/container/java/run/run-java.sh", "--server.port=8081", "-javaagent:/home/jboss/dd-java-agent.jar"]
 
