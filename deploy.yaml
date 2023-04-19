@@ -35,14 +35,14 @@ spec:
               memory: "1024Mi"
               cpu: "500m"
           env:
-            - name: DD_AGENT_HOST
-              valueFrom:
-                fieldRef:
-                  fieldPath: status.hostIP
-            - name: DOGSTATSD_HOST_IP
-              valueFrom:
-                fieldRef:
-                  fieldPath: status.hostIP
+            # - name: DD_AGENT_HOST
+            #   valueFrom:
+            #     fieldRef:
+            #       fieldPath: status.hostIP
+            # - name: DOGSTATSD_HOST_IP
+            #   valueFrom:
+            #     fieldRef:
+            #       fieldPath: status.hostIP
             - name: DD_SERVICE
               value: 'sensors-api'
             - name: DD_PROFILING_ENABLED
