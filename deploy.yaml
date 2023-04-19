@@ -43,16 +43,16 @@ spec:
             #   valueFrom:
             #     fieldRef:
             #       fieldPath: status.hostIP
-            - name: DD_SERVICE
-              value: 'sensors-api'
-            - name: DD_PROFILING_ENABLED
-              value: "true"
-            - name: DD_LOGS_INJECTION
-              value: "true"
-            - name: DD_TRACE_SAMPLE_RATE
-              value: "1"
-            - name: DD_TRACE_ANALYTICS_ENABLED
-              value: 'true'
+            # - name: DD_SERVICE
+            #   value: 'sensors-api'
+            # - name: DD_PROFILING_ENABLED
+            #   value: "true"
+            # - name: DD_LOGS_INJECTION
+            #   value: "true"
+            # - name: DD_TRACE_SAMPLE_RATE
+            #   value: "1"
+            # - name: DD_TRACE_ANALYTICS_ENABLED
+            #   value: 'true'
             - name: JAVA_OPTS_APPEND
               value: '-javaagent:/home/jboss/dd-java-agent.jar'
 ---
