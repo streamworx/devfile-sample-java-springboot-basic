@@ -27,6 +27,5 @@ FROM registry.access.redhat.com/ubi8/openjdk-17-runtime:1.15
 COPY --from=builder /home/jboss/target/export-run-artifact.jar  /deployments/export-run-artifact.jar
 RUN curl -Lo dd-java-agent.jar https://dtdg.co/latest-java-tracer
 # RUN run-env.sh
-RUN export JAVA_OPTS="$JAVA_OPTS -javaagent:/home/jboss/dd-java-agent.jar"
 EXPOSE 8081
-ENTRYPOINT ["/opt/jboss/container/java/run/run-java.sh", "--server.port=8081"]
+ENTRYPOINT ["/opt/jboss/container/java/run/run-java.sh", "--server.port=8081", "-javaagent:/home/jboss//dd-java-agent.jar"]
