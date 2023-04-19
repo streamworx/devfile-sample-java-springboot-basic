@@ -28,4 +28,4 @@ COPY --from=builder /home/jboss/target/export-run-artifact.jar  /deployments/exp
 RUN curl -Lo dd-java-agent.jar https://dtdg.co/latest-java-tracer
 # RUN run-env.sh
 EXPOSE 8081
-ENTRYPOINT ["/opt/jboss/container/java/run/run-java.sh", "--server.port=8081", "-javaagent:/home/jboss//dd-java-agent.jar"]
+ENTRYPOINT ["/opt/jboss/container/java/run/run-java.sh", "--server.port=8081"]
